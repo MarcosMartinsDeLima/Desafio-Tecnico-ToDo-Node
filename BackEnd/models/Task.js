@@ -25,3 +25,5 @@ const Task = connection.define("Task",{
     }
 
 })
+
+module.exports = Task
