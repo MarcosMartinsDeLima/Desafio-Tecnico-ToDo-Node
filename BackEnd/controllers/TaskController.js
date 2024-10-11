@@ -1,4 +1,5 @@
 const getUserFromToken = require("../helper/getUserFromToken")
+const redisClient = require("../db/redisConnection")
 const Task = require('../models/Task')
 
 module.exports = class TaskController
@@ -23,6 +24,7 @@ module.exports = class TaskController
 
         try {
             const newTask = await task.save()
+            await redisClient.del("allTasks")
             resp.status(201).json({newTask})
         } catch (error) {
             return resp.status(500).json(error)
@@ -31,7 +33,13 @@ module.exports = class TaskController
 
     static async getAllTasks(req,resp)
     {
+        const tasksFromCache = await redisClient.get("allTasks")
+        if(tasksFromCache){
+            return resp.status(200).json(JSON.parse(tasksFromCache))
+        }
+
         const tasks = await Task.findAll()
+        await redisClient.set("allTasks",JSON.stringify(tasks),{EX:20})
 
         return resp.status(200).json(tasks)
     }
@@ -63,6 +71,7 @@ module.exports = class TaskController
 
         try {
            const task = await Task.update({status},{where:{id}})
+           await redisClient.del("allTasks")
            return resp.status(200).json({"message":"Tarefa atualizada",task})
         } catch (error) {
             return resp.status(500).json({error})
@@ -87,6 +96,7 @@ module.exports = class TaskController
 
         try{
             const task = await Task.update({title,description,status},{where:{id}})
+            await redisClient.del("allTasks")
             return resp.status(200).json({"message":"Tarefa atualiza",task})
         }
         catch(error){
@@ -106,6 +116,7 @@ module.exports = class TaskController
 
         try {
             await Task.destroy({where:{id}})
+            await redisClient.del("allTasks")
             return resp.status(205).json({})
         } catch (error) {
             return resp.status(500).json({error})
