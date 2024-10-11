@@ -1,5 +1,6 @@
 const express = require("express")
 const connection = require("./db/connection")
+const redisClient = require("./db/redisConnection")
 
 const UserRoutes = require("./routes/UserRoutes")
 const TaskRoutes = require("./routes/TaskRoutes")
@@ -16,6 +17,11 @@ app.use(express.json())
 app.use("/user",UserRoutes)
 app.use("/task",TaskRoutes)
 
-connection.sync().then(
-    app.listen(port)
-)
+const bootstrap = async () =>{
+    await redisClient.connect()
+    connection.sync().then(
+        app.listen(port)
+        )
+}
+
+bootstrap()
