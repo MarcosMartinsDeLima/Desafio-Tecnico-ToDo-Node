@@ -60,7 +60,6 @@ que sobe tanto o Node,Postgres e o Redis
 
 <div style="display: inline_block"><br>
     <img align="center" alt="docker" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Docker.svg">
-    <img align="center" alt="js" height="40" width="40" />
   <img align="center" alt="Rafa-Js" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/JavaScript.svg">
   <img align="center" alt="node" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/NodeJS-Light.svg">
     <img align="center" alt="postgres" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Light.svg">
