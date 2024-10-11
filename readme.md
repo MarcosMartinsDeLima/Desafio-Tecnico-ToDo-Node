@@ -19,6 +19,7 @@ Você também precisará utilizar o Git para versionamento do código
 ## Implementação
 <div id="minha"></div>
 Escolhi o Desafio de NodeJs, e para implementar a solução usei o framework express e começei a desenvolver a API primeiro, gastei por volta de uns 5 minutos para decidir a estrutura do banco de dados, e como o desafio pedia uma autenticação de usuario, então estabeleci um relacionamento da tabela de usuario com a tabela de tarefa, onde para criar uma tarefa precisaria do id do usuario, então criei a rota do usuario e fiz dois endpoints, um de registrar usuario e outro de logar, usei a ORM do sequelize para mapear as duas entidades, ao testar as rotas no postman parti para a proxima etapa, onde criei uma pasta de helpers que funciona como sendo um Middleware para autenticação, criei nela um arquivo para gerar o token JWT, verificar o token e resgatar o usuario a parir dele, em seguida criei as rotas da tarefa e já coloquei o middleware de autenticação para proteger as rotas, criei as funções de adicionar tarefa, listar todas, listar por id, atualizar status, atualizar a tarefa inteira e deletar tarefa. A partir desse momento a api está quase finalizada, faltava implementar o redis, e para esse eu precisei aprender um pouco sobre antes de implementar pois nunca tinha usado, mas quando entendi sua utilização para o cache usando chave e valor, consegui implementar ele, criando um cache na rota de listar todas as tarefas com uma expiração de 20 segundos e um reset toda vez que um dado é alterado nas rotas de put/post ou delete.
+E por fim fiz uma interface front end basica usando react e react router.
 
 #### resolução de problemas
 <div id="problema"></div>
@@ -54,6 +55,8 @@ que sobe tanto o Node,Postgres e o Redis
 - [x] Deletar tarefa.
 - [x] Cache de tarefa usando Redis.
 - [x] Validações.
+- [x] Interface
+- [ ] Nuvem.
 
 ### Tecnologias
 <div id="tecnologias"></div>
@@ -62,5 +65,6 @@ que sobe tanto o Node,Postgres e o Redis
   <img align="center" alt="Rafa-Js" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/JavaScript.svg">
   <img align="center" alt="node" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/NodeJS-Light.svg">
     <img align="center" alt="postgres" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Light.svg">
-        <img align="center" alt="redis" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Redis-Light.svg">
+    <img align="center" alt="redis" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Redis-Light.svg">
+  <img align="center" alt="redis" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/React-Light.svg">
 </div>
