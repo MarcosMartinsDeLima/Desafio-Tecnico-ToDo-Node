@@ -14,7 +14,6 @@ Você também precisará utilizar o Git para versionamento do código
       * [minha implementação](#minha)
       * [resolução de problemas](#problema)
    * [Instalação](#instalacao)
-   * [Endpoints](#como-usar)
    * [Tecnologias](#tecnologias)
 
 ## Implementação
@@ -57,7 +56,7 @@ que sobe tanto o Node,Postgres e o Redis
 - [x] Validações.
 
 ### Tecnologias
-
+<div id="tecnologias"></div>
 <div style="display: inline_block"><br>
     <img align="center" alt="docker" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Docker.svg">
   <img align="center" alt="Rafa-Js" height="40" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/JavaScript.svg">
