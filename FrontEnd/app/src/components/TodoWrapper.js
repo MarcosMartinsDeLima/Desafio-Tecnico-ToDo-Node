@@ -42,7 +42,6 @@ export const TodoWrapper = () => {
         },
       });
 
-      // Atualiza o estado após deletar
       setTodos(todos.filter((todo) => todo.id !== id));
     } catch (error) {
       console.error('Erro ao deletar tarefa:', error);
@@ -56,18 +55,16 @@ export const TodoWrapper = () => {
       }else{
         newStatus = false
       }
-      const token = localStorage.getItem('token'); // Se necessário para autenticação JWT
+      const token = localStorage.getItem('token'); 
 
-      // Fazer a requisição PUT para atualizar o status da tarefa
       await axios.patch(`http://localhost:8000/task/updateStatusById/${id}`, {
         status: newStatus
       }, {
         headers: {
-          Authorization: `Bearer ${token}`, // Adiciona o token JWT, se necessário
+          Authorization: `Bearer ${token}`, 
         },
       });
 
-      // Aqui você pode chamar uma função para atualizar a interface se necessário
 
     } catch (error) {
       console.error("Erro ao atualizar status da tarefa:", error);

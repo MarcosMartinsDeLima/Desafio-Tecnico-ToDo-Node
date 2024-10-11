@@ -10,21 +10,19 @@ export const EditTodoForm = ({ editTodo, task }) => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem('token'); // Se necessário para autenticação JWT
+      const token = localStorage.getItem('token'); 
 
-      // Fazer a requisição PUT para atualizar a tarefa
       await axios.put(`http://localhost:8000/task/updateById/${task.id}`, {
         title: value,
         description: desc,
         status: status
       }, {
         headers: {
-          Authorization: `Bearer ${token}`, // Adiciona o token JWT, se necessário
+          Authorization: `Bearer ${token}`, 
         },
       });
 
-      // Chamar a função editTodo para atualizar a interface
-      editTodo(value, task.id); // Atualiza o título na interface
+      editTodo(value, task.id); 
 
     } catch (error) {
       console.error("Erro ao atualizar tarefa:", error);
@@ -33,18 +31,16 @@ export const EditTodoForm = ({ editTodo, task }) => {
 
   const updateStatus = async (newStatus) => {
     try {
-      const token = localStorage.getItem('token'); // Se necessário para autenticação JWT
+      const token = localStorage.getItem('token'); 
 
-      // Fazer a requisição PUT para atualizar o status da tarefa
       await axios.put(`http://localhost:8000/task/updateStatusById/${task.id}`, {
         status: newStatus
       }, {
         headers: {
-          Authorization: `Bearer ${token}`, // Adiciona o token JWT, se necessário
+          Authorization: `Bearer ${token}`, 
         },
       });
 
-      // Aqui você pode chamar uma função para atualizar a interface se necessário
 
     } catch (error) {
       console.error("Erro ao atualizar status da tarefa:", error);
