@@ -90,8 +90,8 @@ module.exports = class TaskController
 
         const {title,description,status} = req.body
 
-        if(!title || !description || !status){
-            return resp.status(422).json({"message":"Prencha todos os campos"})
+        if(!title && !description && !status){
+            return resp.status(422).json({"message":"Prencha pelo menos um campo"})
         }
 
         try{
